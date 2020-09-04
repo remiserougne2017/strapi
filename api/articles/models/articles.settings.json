@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "name": "articles"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "poster": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "publishedDate": {
+      "type": "string"
+    },
+    "authors": {
+      "collection": "author",
+      "via": "author",
+      "dominant": true
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "tags": {
+      "collection": "tags",
+      "via": "articles",
+      "dominant": true
+    },
+    "summary": {
+      "type": "richtext",
+      "required": false
+    },
+    "seoTitle": {
+      "type": "string",
+      "required": true
+    },
+    "url_external_article": {
+      "type": "string"
+    },
+    "permalink": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "seoDesc": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "published": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
